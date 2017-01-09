@@ -19,17 +19,28 @@ app.all('*', function (req, res, next) {
         // CORS Preflight
         res.send();
     } else {
+      console.log(req);
         var targetURL = req.header('Target-URL');
         if (!targetURL) {
             res.send(500, { error: 'There is no Target-Endpoint header in the request' });
             return;
         }
-        request({ url: targetURL, method: req.method, json: req.body, headers: {'Authorization': req.header('Authorization')} },
-            function (error, response, body) {
-                if (error) {
-                    console.error('error: ' + response.statusCode)
-                }
-            }).pipe(res);
+        if (req.header("Authorization")){
+          request({ url: targetURL, method: req.method, json: req.body, headers: {'Authorization': req.header('Authorization')} },
+              function (error, response, body) {
+                  if (error) {
+                      console.error('error: ' + response.statusCode)
+                  }
+              }).pipe(res);
+        }else {
+          request({ url: targetURL, method: req.method, json: req.body},
+              function (error, response, body) {
+                  if (error) {
+                      console.error('error: ' + response.statusCode)
+                  }
+              }).pipe(res);
+        }
+
     }
 });
 
