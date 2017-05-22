@@ -4,9 +4,8 @@ var express = require('express'),
     request = require('request'),
     bodyParser = require('body-parser'),
     app = express();
-let key = fs.readFileSync("/home/realnets/star.realnets.net_ssl/star.realnets.net.key");
-let cert = fs.readFileSync("/home/realnets/star.realnets.net_ssl/star.realnets.net.crt");
-console.log(key,cert);
+
+
 const options = {
   key: fs.readFileSync("/home/realnets/star.realnets.net_ssl/star.realnets.net.key"),
   cert : fs.readFileSync("/home/realnets/star.realnets.net_ssl/star.realnets.net.crt")
