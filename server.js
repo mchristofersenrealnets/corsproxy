@@ -1,7 +1,14 @@
 var express = require('express'),
+    fs = require("fs"),
+    https = require("https"),
     request = require('request'),
     bodyParser = require('body-parser'),
     app = express();
+
+const options = {
+  key: fs.readFileSync("server.key"),
+  cert : fs.readFileSync("server.crt")
+}
 
 var myLimit = typeof(process.argv[2]) != 'undefined' ? process.argv[2] : '100kb';
 console.log('Using limit: ', myLimit);
@@ -45,6 +52,10 @@ app.all('*', function (req, res, next) {
 
 app.set('port', process.env.PORT || 80);
 
-app.listen(app.get('port'), function () {
-    console.log('Proxy server listening on port ' + app.get('port'));
-});
+// app.listen(app.get('port'), function () {
+//     console.log('Proxy server listening on port ' + app.get('port'));
+// });
+
+https.createServer(options,app).listen(443,()=>{
+  console.log("listening on port 443");
+})
