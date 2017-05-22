@@ -6,8 +6,8 @@ var express = require('express'),
     app = express();
 
 const options = {
-  key: fs.readFileSync("server.key"),
-  cert : fs.readFileSync("server.crt")
+  key: fs.readFileSync("/home/realnets/star.realnets.net_ssl/star.realnets.net.key"),
+  cert : fs.readFileSync("/home/realnets/star.realnets.net_ssl/star.realnets.net.crt")
 }
 
 var myLimit = typeof(process.argv[2]) != 'undefined' ? process.argv[2] : '100kb';
