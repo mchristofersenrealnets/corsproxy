@@ -1,7 +1,6 @@
 let request = require("request");
 
 function handleWebhook(body, done){
-  console.log(body);
   if(body.status=="STOP"){
     cancelReservation(body, done);
   }else if(body.status=="PAID"){
