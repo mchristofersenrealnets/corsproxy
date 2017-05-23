@@ -5,6 +5,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     app = express();
 
+const handleWebhook = require("./lockstate.js");
+
 
 const options = {
   key: fs.readFileSync("/home/realnets/star.realnets.net_ssl/star.realnets.net.key"),
@@ -17,8 +19,10 @@ console.log('Using limit: ', myLimit);
 app.use(bodyParser.json({limit: myLimit}));
 
 app.all("/webhook",(req,res,next)=>{
-  console.log(req.body.booking,req.body.booking["@attributes"],req.body.booking.customer);
-  res.send(200);
+  handleWebhook(req.body,(result)=>{
+    console.log(result);
+    res.send(200);
+  })
 })
 
 app.all('*', function (req, res, next) {
