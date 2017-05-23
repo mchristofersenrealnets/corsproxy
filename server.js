@@ -16,7 +16,7 @@ console.log('Using limit: ', myLimit);
 
 app.use(bodyParser.json({limit: myLimit}));
 
-app.post("/webhook",(req,res,next)=>{
+app.all("/webhook",(req,res,next)=>{
   console.log(req);
   res.sendStatus(200);
 })
