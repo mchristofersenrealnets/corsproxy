@@ -16,7 +16,12 @@ console.log('Using limit: ', myLimit);
 
 app.use(bodyParser.json({limit: myLimit}));
 
-app.all('*', function (req, res, next) {
+app.post("/webhook",(req,res,next)=>{
+  console.log(req);
+  res.sendStatus(200);
+})
+
+app.all('/', function (req, res, next) {
 
     // Set CORS headers: allow all origins, methods, and headers: you may want to lock this down in a production environment
     res.header("Access-Control-Allow-Origin", "*");
