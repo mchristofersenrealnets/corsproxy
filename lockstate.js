@@ -1,5 +1,4 @@
 let request = require("request");
-let async = require("async");
 
 const clientId= "6bd28423e3a931648a9484f930b214ce3881c712841b787b51b274986ec4bd47";
 const clientSecret = "a660efe1e5132dcd07500ec8b73135819f408b6d794bd356004ebaaed3ca54ef";
