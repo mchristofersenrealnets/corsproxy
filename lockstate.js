@@ -23,14 +23,14 @@ function cancelReservation(body, done){
 function sendConfirmation(body, done){
   console.log(`Sending Confirmation to ${body.customer.email}`);
   getToken((response)=>{
-    console.log(response.access_token);
+    console.log(response);
     done("success!");
   })
 }
 
 function getToken(done){
   request({ url: oAuthUrl, method: "POST"},(error,response,body)=>{
-    done(body);
+    done(response);
   })
 }
 
