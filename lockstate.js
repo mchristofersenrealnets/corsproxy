@@ -2,9 +2,9 @@ let request = require("request");
 
 function handleWebhook(body, done){
   if(body.status=="STOP"){
-    cancelReservation(body);
+    cancelReservation(body, done);
   }else if(body.status=="PAID"){
-    sendConfirmation(body);
+    sendConfirmation(body, done);
   }else {
     done("error!");
   }
