@@ -5,6 +5,8 @@ function handleWebhook(body, done){
     cancelReservation(body);
   }else if(body.status=="PAID"){
     sendConfirmation(body);
+  }else {
+    done("error!");
   }
 }
 
