@@ -21,7 +21,7 @@ app.post("/webhook",(req,res,next)=>{
   res.sendStatus(200);
 })
 
-app.all('/', function (req, res, next) {
+app.all('*', function (req, res, next) {
 
     // Set CORS headers: allow all origins, methods, and headers: you may want to lock this down in a production environment
     res.header("Access-Control-Allow-Origin", "*");
