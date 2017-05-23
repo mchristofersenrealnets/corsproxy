@@ -17,7 +17,7 @@ console.log('Using limit: ', myLimit);
 app.use(bodyParser.json({limit: myLimit}));
 
 app.all("/webhook",(req,res,next)=>{
-  console.log(req);
+  console.log(req.body.booking,req.body.booking["@attributes"],req.body.booking.customer);
   res.send(200);
 })
 
